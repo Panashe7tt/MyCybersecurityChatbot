@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<RootNamespace>MyCybersecurityChatbot</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+	</ItemGroup>
+
+	<!-- ✅ FIX: Force WAV file to copy to output directory -->
+	<ItemGroup>
+		<Content Include="greetings (1).wav">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="nash-logo.jpg" />
+	</ItemGroup>
+
+</Project>

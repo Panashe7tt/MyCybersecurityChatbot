@@ -1,0 +1,81 @@
+﻿<Window x:Class="MyCybersecurityChatbot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nash Cybersecurity Bot"
+        Height="750"
+        Width="1100"
+        Background="#0F0F1A"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- SIDEBAR -->
+        <StackPanel Grid.Column="0" Background="#1A1A2E" Margin="10">
+
+            <TextBlock Text="NASH BOT"
+                       Foreground="#00FFCC"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,10"/>
+
+            <!-- LOGO - FIXED -->
+            <Image Source="nash-logo.jpeg"
+                   Width="140"
+                   Height="140"
+                   Stretch="Uniform"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+            <Button Content="💬 Chat" Click="ShowChat" Margin="10" Height="40"/>
+            <Button Content="📋 Tasks" Click="ShowTasks" Margin="10" Height="40"/>
+            <Button Content="🧠 Quiz" Click="ShowQuiz" Margin="10" Height="40"/>
+            <Button Content="📜 Log" Click="ShowLog" Margin="10" Height="40"/>
+        </StackPanel>
+
+        <!-- CHAT VIEW -->
+        <Grid x:Name="ChatView" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Row="0">
+                <StackPanel x:Name="ChatPanel" Margin="10"/>
+            </ScrollViewer>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+                <TextBox x:Name="UserInput" Width="700" Height="40"/>
+                <Button Content="Send" Width="100" Click="SendButton_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- TASK VIEW -->
+        <StackPanel x:Name="TaskView" Grid.Column="1" Visibility="Collapsed" Margin="20">
+            <TextBlock Text="Task Manager" FontSize="20" Foreground="#00FFCC" Margin="0,0,0,10"/>
+            <TextBox x:Name="TaskTitleInput" Height="35" Margin="0,0,0,5"/>
+            <TextBox x:Name="TaskDescInput" Height="60" Margin="0,0,0,10"/>
+            <Button Content="➕ Add Task" Click="AddTask_Click" Height="35" Margin="0,0,0,10"/>
+            <ListBox x:Name="TasksListBox" Height="350"/>
+        </StackPanel>
+
+        <!-- QUIZ VIEW -->
+        <StackPanel x:Name="QuizView" Grid.Column="1" Visibility="Collapsed" Margin="20">
+            <TextBlock Text="Cybersecurity Quiz" FontSize="20" Foreground="#00FFCC" Margin="0,0,0,15"/>
+            <TextBlock x:Name="QuizQuestionText" FontSize="16" Foreground="Silver" TextWrapping="Wrap" Margin="0,0,0,20"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="A" Width="80" Height="50" Margin="10" Click="QuizAnswer_Click" Tag="0"/>
+                <Button Content="B" Width="80" Height="50" Margin="10" Click="QuizAnswer_Click" Tag="1"/>
+                <Button Content="C" Width="80" Height="50" Margin="10" Click="QuizAnswer_Click" Tag="2"/>
+                <Button Content="D" Width="80" Height="50" Margin="10" Click="QuizAnswer_Click" Tag="3"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- LOG VIEW -->
+        <TextBox x:Name="LogTextBox" Grid.Column="1" Visibility="Collapsed" IsReadOnly="True" TextWrapping="Wrap" Foreground="White" Background="#0F0F1A" Margin="20"/>
+    </Grid>
+</Window>
